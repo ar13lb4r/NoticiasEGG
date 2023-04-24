@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        
+        
+    <title>Eliminar</title>
+
+
+    <style>
+           h1 { font-family: 'Courier New', Courier, monospace;text-decoration: underline;font-weight: bold;text-align: center }
+        p { font-Family: arial,verdana; color: white; background-color: black }
+        body { background-size: cover;background-repeat: no-repeat;background-image: url("https://marketing4ecommerce.net/wp-content/uploads/2019/01/usuarios-de-internet-en-el-mundo.jpg")
+        ;color: #f2f7f3; background-color: #180569; text-indent: 1cm }
+        nav.navbar{ font-family:'Courier New', Courier, monospace;font-weight: bold ; color:rgb(22, 1, 1);background-color: rgb(221, 206, 206); }
+        form{font-family: 'Courier New', Courier, monospace;}
+        button{font-family: 'Courier New', Courier, monospace;color: azure}
+        section{font-family: 'Courier New', Courier, monospace;color: azure}
+        </style>
+
+
+</head>
+
+<body>
+
+    <body>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <a class="navbar-brand" href="#">NOTICIASEGG</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/}">Inicio </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/noticia/registrar}">Crear Noticia </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{../noticia/lista}">Listar Noticias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{../noticia/eliminar}">Eliminar Noticia <span
+                                class="sr-only">(ahora)</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <h1>Eliminar noticia</h1>
+
+
+        <div class="form-group my-3">
+            <form class="formulario" action="/noticia/eliminacion" method="POST">
+
+                <select name="titulo">
+
+                    <option>Seleccionar Noticia</option>
+
+                    <option th:each="noticia : ${noticias}" th:value="${noticia.titulo}" th:text="${noticia.titulo}" />
+                </select>
+                <br>
+
+                <button type="submit" class="btn btn-primary mt-3 botones">Eliminar</button>
+
+            </form>
+
+        </div>
+        <div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito">
+            <div class="card-body">
+                <h5 class="card-title">Exito!</h5>
+                <p class="card-text" th:text="${exito}"></p>
+            </div>
+        </div>
+        <div th:if="${error}!=null" class="card text-white bg-danger mb-3 mensajeError">
+            <div class="card-body">
+                <h5 class="card-title">Error 👎</h5>
+                <p class="card-text" th:text="${error}"></p>
+            </div>
+        </div>
+        <section class=" text-center container">
+            <div class="row mt-3">
+                <div class="divVolver">
+                    <a th:href="@{/}" class="btn btn-secondary my-2 botonVolver botones">Volver</a>
+                </div>
+            </div>
+        </section>
+        </div>
+
+        <footer class="text-muted py-5">
+            <div class="containerFooter">
+                <p class="mb-1">Album example is &copy; Bootstrap,<br>but please download and customize it for yourself!
+                </p>
+                <p class="mb-0">New to Bootstrap? <a href="/"><br>Visit the homepage</a> or read our <a
+                        href="../getting-started/introduction/">getting started guide</a>.</p>
+                <p class="float-end mb-1">
+                    <a href="#" style="text-decoration:none"><span>⬆️</span> Back to top</a>
+                </p>
+            </div>
+        </footer>
+
+
+
+
+
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    </body>
+
+</html>
